@@ -14,8 +14,9 @@ class Solution {
 public:
     vector<vector<int>> findSolution(CustomFunction& customfunction, int z) {
         vector<vector<int>> res;
+        int l = 1, r = 1000, m;
         for(int i = 1; i < 1001; ++ i) {
-            int l = 1, r = 1000, m;
+            l = 1;
             while(l < r) {
                 m = l + (r - l) / 2;
                 int temp = customfunction.f(i, m);
