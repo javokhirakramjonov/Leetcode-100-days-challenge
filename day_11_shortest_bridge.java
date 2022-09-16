@@ -25,7 +25,6 @@ class Solution {
 
         int[] p;
         int x, y;
-        int mn = n + m;
         while (!queue.isEmpty()) {
             p = queue.remove();
             x = p[0];
@@ -33,34 +32,34 @@ class Solution {
             if (x > 0 && !used[x - 1][y]) {
                 used[x - 1][y] = true;
                 if (grid[x - 1][y] == 1) {
-                    mn = Math.min(mn, p[2]);
+                    return p[2];
                 } else
                     queue.add(new int[]{x - 1, y, p[2] + 1});
             }
             if (y > 0 && !used[x][y - 1]) {
                 used[x][y - 1] = true;
                 if (grid[x][y - 1] == 1) {
-                    mn = Math.min(mn, p[2]);
+                    return p[2];
                 } else
                     queue.add(new int[]{x, y - 1, p[2] + 1});
             }
             if (x + 1 < n && !used[x + 1][y]) {
                 used[x + 1][y] = true;
                 if (grid[x + 1][y] == 1) {
-                    mn = Math.min(mn, p[2]);
+                    return p[2];
                 } else
                     queue.add(new int[]{x + 1, y, p[2] + 1});
             }
             if (y + 1 < m && !used[x][y + 1]) {
                 used[x][y + 1] = true;
                 if (grid[x][y + 1] == 1) {
-                    mn = Math.min(mn, p[2]);
+                    return p[2];
                 } else
                     queue.add(new int[]{x, y + 1, p[2] + 1});
             }
         }
 
-        return mn;
+        return -1;
     }
 
     private void dfs(int x, int y) {
